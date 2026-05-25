@@ -46,4 +46,19 @@
     s.textContent='@keyframes fadeIn{from{opacity:0}to{opacity:1}}';
     document.head.appendChild(s);
   }
+
+  // Language dropdown — click to open/close
+  document.querySelectorAll('.lang-drop').forEach(function(drop){
+    var btn = drop.querySelector('.lang-btn');
+    if(!btn) return;
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      drop.classList.toggle('open');
+    });
+    // Close when clicking outside
+    document.addEventListener('click', function(){
+      drop.classList.remove('open');
+    });
+    drop.addEventListener('click', function(e){ e.stopPropagation(); });
+  });
 })();
